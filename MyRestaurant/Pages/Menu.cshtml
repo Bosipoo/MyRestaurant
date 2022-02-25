@@ -41,7 +41,10 @@
                         </div>
                         <div id="prod-display3">
                             <p>@product.Price&nbsp;</p>
-                            <a asp-page-handler="Add" asp-route-ID="@product.ProductId">Add</a>
+                            <form method="post">
+                                <button asp-page-handler="Add" asp-route-id="@product.ProductId" class="add2cart">Add</button>
+                            </form>
+                            @*<a asp-page-handler="Add" asp-route-ID="@product.ProductId">Add</a>*@
                         </div>
                     </div>
                 }

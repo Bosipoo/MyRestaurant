@@ -611,7 +611,7 @@ form #logout{
     color: #666;
 }
 
-#prod-display3 input[type=button] {
+#prod-display3 .add2cart {
     background-color: #d56442;
     color: white;
     border: none;

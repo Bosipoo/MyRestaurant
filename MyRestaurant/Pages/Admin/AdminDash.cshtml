@@ -43,11 +43,10 @@
                         </td>
                         <td class="grid">
                             <a asp-page="/Admin/EditProduct" asp-route-ID="@item.ProductId" id="edit-button">Edit</a>
-
-                            <a href="@Url.Action("Details", new { @item.ProductId })" id="details-button">Details</a>
-                            
-                            <a asp-page-handler="Delete" asp-route-ID="@item.ProductId" onclick="return confirm('Are you sure you want to delete?')" id="delete-button">Delete</a>
-</td>
+                            <form method="post">
+                                <button asp-page-handler="Delete" asp-route-id="@item.ProductId" onclick="return confirm('Are you sure you want to delete?')" id="delete-button">Delete</button>
+                            </form>
+                        </td>
                     </tr>
 
                 }

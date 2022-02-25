@@ -17,7 +17,7 @@ namespace MyRestaurant.Pages.Admin
         }
 
         [BindProperty]
-        public Product Product { get; private set; }
+        public Product Product { get; set; }
 
         public IActionResult OnGet(int id)
         {
@@ -42,7 +42,7 @@ namespace MyRestaurant.Pages.Admin
                 ProdFromDb.Price = Product.Price;
 
                 await _context.SaveChangesAsync();
-                return RedirectToPage("Admin/AdminDash");
+                return RedirectToPage("/Admin/AdminDash");
             }
             return RedirectToPage();
         }

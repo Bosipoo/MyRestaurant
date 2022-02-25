@@ -17,19 +17,19 @@ namespace MyRestaurant.Pages
     {
 
         private readonly MyRestaurantContext _context;
-        private List<CartViewModel> cartList;
+        //private List<CartViewModel> cartList;
 
         public CartModel(MyRestaurantContext context)
         {
             _context = context;
-            cartList = new List<CartViewModel>();
+            //cartList = new List<CartViewModel>();
         }
 
-        public IList<Order> cart { get; set; }
+        public List<CartViewModel> cartList { get; set; }
 
         public async Task OnGet()
         {
-            //cart = HttpContext.Session.GetComplexData<List<CartViewModel>>("CartItem");
+            cartList = HttpContext.Session.GetComplexData<List<CartViewModel>>("CartItem");
         }
 
         public async Task<IActionResult> OnPostSaveOrder()
@@ -66,7 +66,7 @@ namespace MyRestaurant.Pages
             HttpContext.Session.SetInt32("CartCounter", 0);
             HttpContext.Session.SetComplexData("CartItem", null);
 
-            return Redirect("/Index");
+            return Redirect("/Menu");
         }
     }
 }

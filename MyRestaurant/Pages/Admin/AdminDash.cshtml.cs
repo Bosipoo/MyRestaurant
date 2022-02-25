@@ -34,7 +34,7 @@ namespace MyRestaurant.Pages.Admin
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("Admin/AdminDash");
+            return RedirectToPage();
         }
     }
 }
