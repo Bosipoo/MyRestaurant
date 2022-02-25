@@ -71,7 +71,9 @@
                         </div>
                         <div id="prod-display3">
                             <p>@product.Price&nbsp;</p>
-                            <input type="button" value="Add" onclick="AddtoCart(@product.ProductId)" />
+                            <form method="post">
+                                <button asp-page-handler="Add" asp-route-id="@product.ProductId" class="add2cart">Add</button>
+                            </form>
                         </div>
                     </div>
                 }
@@ -98,7 +100,9 @@
                         </div>
                         <div id="prod-display3">
                             <p>@product.Price&nbsp;</p>
-                            <input type="button" value="Add" onclick="AddtoCart(@product.ProductId)" />
+                            <form method="post">
+                                <button asp-page-handler="Add" asp-route-id="@product.ProductId" class="add2cart">Add</button>
+                            </form>
                         </div>
                     </div>
                 }
@@ -125,7 +129,9 @@
                         </div>
                         <div id="prod-display3">
                             <p>@product.Price&nbsp;</p>
-                            <input type="button" value="Add" onclick="AddtoCart(@product.ProductId)" />
+                            <form method="post">
+                                <button asp-page-handler="Add" asp-route-id="@product.ProductId" class="add2cart">Add</button>
+                            </form>
                         </div>
                     </div>
                 }
@@ -152,7 +158,9 @@
                         </div>
                         <div id="prod-display3">
                             <p>@product.Price&nbsp;</p>
-                            <input type="button" value="Add" onclick="AddtoCart(@product.ProductId)" />
+                            <form method="post">
+                                <button asp-page-handler="Add" asp-route-id="@product.ProductId" class="add2cart">Add</button>
+                            </form>
                         </div>
                     </div>
                 }

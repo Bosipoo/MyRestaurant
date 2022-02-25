@@ -1,5 +1,5 @@
 ﻿@page
-@model MyRestaurant.Pages.Contacts.FeedbackModel
+@model MyRestaurant.Pages.FeedbackModel
 @{
     ViewData["Title"] = "Contact";
     Layout = "~/Pages/Shared/_Layout.cshtml";
@@ -12,17 +12,17 @@
     <form method="post">
         <div class="f-group">
             <label class="form-label" asp-for="Contact.Name"></label>
-            <input asp-for="Contact.Name" class="form-control" placeholder = "Full name"/>
+            <input asp-for="Contact.Name" class="form-control" placeholder="Full name" />
             <span asp-validation-for="Contact.Name" class="text-danger"></span>
         </div>
         <div class="f-group">
             <label class="form-label" asp-for="Contact.Subject"></label>
-            <input asp-for="Contact.Subject" class="form-control" placeholder = "Subject" />
+            <input asp-for="Contact.Subject" class="form-control" placeholder="Subject" />
             <span asp-validation-for="Contact.Subject" class="text-danger"></span>
         </div>
         <div class="f-group">
             <label class="form-label" asp-for="Contact.Email"></label>
-            <input asp-for="Contact.Email" class="form-control" placeholder = "Email" />
+            <input asp-for="Contact.Email" class="form-control" placeholder="Email" />
             <span asp-validation-for="Contact.Email" class="text-danger"></span>
         </div>
         <div class="f-group">
@@ -30,7 +30,7 @@
                 <label class="form-label" asp-for="Contact.Message"></label>
             </div>
             <div class="row">
-                <textarea asp-for="Contact.Message" class="form-control" placeholder = "Message"></textarea>
+                <textarea asp-for="Contact.Message" class="form-control" placeholder="Message"></textarea>
                 <span asp-validation-for="Contact.Message" class="text-danger"></span>
             </div>
         </div>

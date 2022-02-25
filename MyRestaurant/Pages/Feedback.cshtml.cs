@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using MyRestaurant.Data;
 using MyRestaurant.Models;
 
-namespace MyRestaurant.Pages.Contacts
+namespace MyRestaurant.Pages
 {
     public class FeedbackModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace MyRestaurant.Pages.Contacts
         }
 
         [BindProperty]
-        public Contact Contact{ get; set; }
+        public Contact Contact { get; set; }
 
         public IActionResult OnGet()
         {
