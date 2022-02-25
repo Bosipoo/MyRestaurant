@@ -1,0 +1,44 @@
+﻿@page
+@model MyRestaurant.Pages.Contacts.FeedbackModel
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="center-text">
+    <h2 style="color: #D56442;">Contact Us</h2>
+</div>
+<div id="middle-box-contact">
+    <form method="post">
+        <div class="f-group">
+            <label class="form-label" asp-for="Contact.Name"></label>
+            <input asp-for="Contact.Name" class="form-control" placeholder = "Full name"/>
+            <span asp-validation-for="Contact.Name" class="text-danger"></span>
+        </div>
+        <div class="f-group">
+            <label class="form-label" asp-for="Contact.Subject"></label>
+            <input asp-for="Contact.Subject" class="form-control" placeholder = "Subject" />
+            <span asp-validation-for="Contact.Subject" class="text-danger"></span>
+        </div>
+        <div class="f-group">
+            <label class="form-label" asp-for="Contact.Email"></label>
+            <input asp-for="Contact.Email" class="form-control" placeholder = "Email" />
+            <span asp-validation-for="Contact.Email" class="text-danger"></span>
+        </div>
+        <div class="f-group">
+            <div class="row">
+                <label class="form-label" asp-for="Contact.Message"></label>
+            </div>
+            <div class="row">
+                <textarea asp-for="Contact.Message" class="form-control" placeholder = "Message"></textarea>
+                <span asp-validation-for="Contact.Message" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="f-group">
+            <button class="btn btn-primary log" type="submit">Send</button>
+        </div>
+    </form>
+</div>
+<div id="Map">
+    <img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=Chester+CH1+4BJ,+United+Kingdom&zoom=9&scale=false&size=600x300&maptype=roadmap&key=AIzaSyAymxgKnnRvm65wMAjlH0EHh9jGL4_aLkU&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7CChester+CH1+4BJ,+United+Kingdom" alt="Google Map of Chester CH1 4BJ, United Kingdom">
+</div>

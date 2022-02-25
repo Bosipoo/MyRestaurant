@@ -1,0 +1,75 @@
+﻿@page
+@model MyRestaurant.Pages.Admin.CreateProductModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+<div id="admin-content">
+    <form method="post">
+        <div class="f-group">
+            <div class="row">
+                <div class="left pad">
+                    <label class="form-label" asp-for="model.Category"></label>
+                    <input asp-for="model.Category" class="form-control" />
+                    <span asp-validation-for="model.Category" class="text-danger"></span>
+
+                    @*<select asp-for="model.Category" class="form-control" asp-items="Html.GetEnumSelectList<Category>()"><option value="">Please Select</option></select>*@
+                </div>
+
+                <div class="left pad">
+                    <label class="form-label" asp-for="model.Name"></label>
+                    <input asp-for="model.Name" class="form-control" placeholder="Product Name" />
+                    <span asp-validation-for="model.Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <div class="pad">
+                        <label class="form-label" asp-for="model.Price"></label>
+                        <input asp-for="model.Price" class="form-control" placeholder="Price" />
+                        <span asp-validation-for="model.Price" class="text-danger"></span>
+                    </div>
+                    <div class="pad">
+                        <label class="form-label" asp-for="model.ImagePath"></label>
+                        <input asp-for="model.ImagePath" class="form-control" />
+                        <span asp-validation-for="model.ImagePath" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="left">
+                    <div class="pad">
+                        <label class="form-label" asp-for="model.Description"></label>
+                        <input asp-for="model.Description" class="form-control" placeholder="Product Description" />
+                        <span asp-validation-for="model.Description" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="f-group">
+                <center><button class="log" type="submit">Submit</button></center>
+            </div>
+
+        </div>
+    </form>
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+
+    }
+</div>
+
+@{
+    @section scripts{
+        @*<script type="text/javascript">
+
+                // Add the following code if you want the name of the file appear on select
+                $(".custom-file-input").on("change", function () {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                });
+            </script>*@
+    }
+}

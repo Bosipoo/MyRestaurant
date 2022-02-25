@@ -1,0 +1,91 @@
+﻿@page
+@model MyRestaurant.Pages.CartModel
+@{
+    ViewData["Title"] = "Checkout";
+    double Total = 0.00;
+}
+<!--
+<div class="content">
+    <div class="block-heading">
+        <h2 class="center-text">Shopping Cart</h2>
+    </div>
+    <div id="middle-box-checkout">
+        <div class="row">
+            
+    using (Html.BeginForm("SaveOrder", "Booking", FormMethod.Post, new { enctype = "multipart/form-data", style = "margin: auto;" }))
+            {
+                <div id="checkout-items">-->
+<!--Resuable Component-->
+<!--
+foreach (var prod in Model)
+                    {
+                        Total += prod.Total;
+                        <div class="grid-column">
+                            <div>
+                                <picture>
+                                    <img src="/img/
+                                    prod.ImagePath" style="height: 100px;width: 120px;">
+                                </picture>
+                            </div>
+                            <div>
+                                <a class="product-name" href="#" style="font-size: 23px;">
+                                prod.ItemName</a>
+                            </div>
+                            <div class="column">
+                                <label for="quantity">Quantity</label>
+                                <input type="number" id="number" class="quantity-input" value="
+                                prod.Quantity" disabled>
+                            </div>
+                            <div>
+                                <span>
+                                prod.UnitPrice</span>
+                            </div>
+                            <div>
+                                <span>
+                                prod.Total</span>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+                <div id="checkout-summary">
+                    <h3 class="center-text">SUMMARY</h3>
+                    <div class="sub-summary">
+
+                        <h4><span class="text">Total</span><span class="price">
+    
+                        Total</span></h4>
+                        <button class="log" id="btnOut" type="submit">Checkout</button>
+                    </div>
+                </div>
+
+            }
+
+            @section Scripts {
+                <script type="text/javascript">
+                    $(function () {
+                        $("#btnOut").click(function () {
+                            $.ajax({
+                                type: "POST",
+                                url: "/Booking/AjaxMethod",
+                                data: '{}',
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (response) {
+                                    if (response == true) {
+                                        alert("Order Successfully Placed");
+                                        window.location ="Index";
+                                    }
+                                }
+                            });
+                        });
+                    });
+                </script>
+            }
+
+
+        </div>
+    </div>
+
+</div>-->

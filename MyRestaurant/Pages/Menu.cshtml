@@ -1,0 +1,196 @@
+﻿@page
+@model MyRestaurant.Pages.MenuModel
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<section class="hero-image">
+    <div class="centered">
+        <h2 style="color: rgb(239,242,245);font-size: 52.128px;font-family: Jost, sans-serif;">MAIN MENU</h2>
+        <p style="color: rgb(255,255,255); font-size: 35px; font-family: Lato, sans-serif; margin-top: -30px;">LOVE AT FIRST SLICE</p>
+    </div>
+</section>
+<section>
+    <nav id="subnav">
+        <div id="category">
+            <a class="sub subnav-active" href="#firstSection">Pizza</a>
+            <a class="sub" href="#secondSection">Sides</a>
+            <a class="sub" href="#thirdSection">Chicken</a>
+            <a class="sub" href="#fourthSection">Drinks</a>
+            <a class="sub" href="#fifthSection">Deals</a>
+        </div>
+    </nav>
+</section>
+<div class="content">
+
+    <section class="subSection" id="firstSection">
+        <h4 class="bpoint">&nbsp;PIZZA&nbsp;</h4>
+        <div class="product-grid">
+            @foreach (var product in Model.Product)
+            {
+                @if (product.Category == "Pizza")
+                {
+                    <!--Component-->
+                    <div class="row product-card">
+                        <div id="prod-display1">
+                            <img src="/img/@product.ImagePath">
+                        </div>
+                        <div id="prod-display2">
+                            <p>@product.Name</p>
+                            <span>@product.Description</span>
+                        </div>
+                        <div id="prod-display3">
+                            <p>@product.Price&nbsp;</p>
+                            <a asp-page-handler="Add" asp-route-ID="@product.ProductId">Add</a>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </section>
+
+    <section class="subSection" id="secondSection">
+        <h4 class="bpoint">&nbsp;SIDES&nbsp;</h4>
+        <div class="product-grid">
+            @foreach (var product in Model.Product)
+            {
+                @if (product.Category == "Sides")
+                {
+                    <!--Component-->
+
+                    <div class="row product-card">
+                        <div id="prod-display1">
+                            <img src="/img/@product.ImagePath">
+                        </div>
+                        <div id="prod-display2">
+                            <p>@product.Name</p>
+                            <span>@product.Description</span>
+                        </div>
+                        <div id="prod-display3">
+                            <p>@product.Price&nbsp;</p>
+                            <input type="button" value="Add" onclick="AddtoCart(@product.ProductId)" />
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </section>
+
+    <section class="subSection" id="thirdSection">
+        <h4 class="bpoint">&nbsp;CHICKEN&nbsp;</h4>
+        <div class="product-grid">
+            @foreach (var product in Model.Product)
+            {
+                @if (product.Category == "Chicken")
+                {
+                    <!--Component-->
+
+                    <div class="row product-card">
+                        <div id="prod-display1">
+                            <img src="/img/@product.ImagePath">
+                        </div>
+                        <div id="prod-display2">
+                            <p>@product.Name</p>
+                            <span>@product.Description</span>
+                        </div>
+                        <div id="prod-display3">
+                            <p>@product.Price&nbsp;</p>
+                            <input type="button" value="Add" onclick="AddtoCart(@product.ProductId)" />
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </section>
+
+    <section class="subSection" id="fourthSection">
+        <h4 class="bpoint">&nbsp;DRINKS&nbsp;</h4>
+        <div class="product-grid">
+            @foreach (var product in Model.Product)
+            {
+                @if (product.Category == "Drinks")
+                {
+                    <!--Component-->
+
+                    <div class="row product-card">
+                        <div id="prod-display1">
+                            <img src="/img/@product.ImagePath">
+                        </div>
+                        <div id="prod-display2">
+                            <p>@product.Name</p>
+                            <span>@product.Description</span>
+                        </div>
+                        <div id="prod-display3">
+                            <p>@product.Price&nbsp;</p>
+                            <input type="button" value="Add" onclick="AddtoCart(@product.ProductId)" />
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </section>
+
+    <section class="subSection" id="fifthSection">
+        <h4 class="bpoint">&nbsp;DEALS&nbsp;</h4>
+        <div class="product-grid">
+            @foreach (var product in Model.Product)
+            {
+                @if (product.Category == "Deals")
+                {
+                    <!--Component-->
+
+                    <div class="row product-card">
+                        <div id="prod-display1">
+                            <img src="/img/@product.ImagePath">
+                        </div>
+                        <div id="prod-display2">
+                            <p>@product.Name</p>
+                            <span>@product.Description</span>
+                        </div>
+                        <div id="prod-display3">
+                            <p>@product.Price&nbsp;</p>
+                            <input type="button" value="Add" onclick="AddtoCart(@product.ProductId)" />
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </section>
+
+</div>
+
+
+@{
+    @section Scripts {
+        <!--Sticky NavBar-->
+        <script type="text/javascript">
+            window.onscroll = function () { myFunction() };
+
+            var navbar = document.getElementById("subnav");
+            var sticky = navbar.offsetTop;
+
+            function myFunction() {
+                if (window.pageYOffset >= sticky) {
+                    navbar.classList.add("sticky")
+                } else {
+                    navbar.classList.remove("sticky");
+                }
+            }
+
+            var header = document.getElementById("category");
+            var btns = header.getElementsByClassName("sub");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function () {
+                    var current = document.getElementsByClassName("subnav-active");
+                    current[0].className = current[0].className.replace(" subnav-active", "");
+                    this.className += " subnav-active";
+                });
+            }
+
+            function AddtoCart(item) {
+                window.location = "/Booking/AddItem/" + item;
+            }
+        </script>
+    }
+}
+

@@ -1,0 +1,48 @@
+﻿@page
+@model MyRestaurant.Pages.Admin.EditProductModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+<div id="admin-content">
+    <form method="post">
+        <input hidden asp-for="Product.ProductId" />
+        <div class="f-group">
+            <div class="row">
+                <div class="left pad">
+                    <label asp-for="Product.Category" class="form-label"></label>
+                    <input asp-for="Product.Category" class="form-control" placeholder="Select Category">
+                </div>
+
+                <div class="left pad">
+                    <label asp-for="Product.Name" class="form-label"></label>
+                    <input asp-for="Product.Name" class="form-control" placeholder="Product Name">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="left">
+                    <div class="pad">
+                        <label asp-for="Product.Price" class="form-label"></label>
+                        <input asp-for="Product.Price" class="form-control" placeholder="Price">
+                    </div>
+                    <div class="pad">
+                        <label class="form-label" asp-for="Product.ImagePath"></label>
+                        <input asp-for="Product.ImagePath" class="form-control" />
+                    </div>
+                </div>
+                <div class="left">
+                    <div class="pad">
+                        <label class="form-label" asp-for="Product.Description"></label>
+                        <input asp-for="Product.Description" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="f-group">
+                <center><button class="log" type="submit">Submit</button></center>
+            </div>
+
+        </div>
+    </form>
+
+</div>

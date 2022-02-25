@@ -1,0 +1,91 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MyRestaurant.Areas.Identity.Data
+
+@inject SignInManager<MyRestaurantUser> SignInManager
+@inject UserManager<MyRestaurantUser> UserManager
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/main.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost&amp;subset=latin-ext,cyrillic&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&amp;subset=latin-ext&amp;display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="Topbar">
+        <div class="box">
+            <span class="logo">
+                <a asp-page="Index">Pizzaria</a>
+            </span>
+            <div class="main_list">
+                <partial name="_LoginPartial.cshtml" />
+            </div>
+        </div>
+    </nav>
+
+    <main class="landing-page">
+        <div>
+            @RenderBody()
+        </div>
+    </main>
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+
+        <footer>
+            <div class="foot">
+                <ul>
+                    <li><a href="http://validator.w3.org/check?uri=referer">Validate HTML</a></li>
+                    <li><a href="http://jigsaw.w3.org/css-validator/check/referer">Validate CSS</a></li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li><a asp-page="Admin/AdminDash">Admin</a></li>
+                    }
+                </ul>
+            </div>
+        </footer>
+    }
+    else
+    {
+        <footer>
+            <div class="foot">
+                <ul>
+                    <li><a href="http://validator.w3.org/check?uri=referer">Validate HTML</a></li>
+                    <li><a href="http://jigsaw.w3.org/css-validator/check/referer">Validate CSS</a></li>
+                </ul>
+            </div>
+        </footer>
+    }
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("Topbar");
+            if (x.className === "navbar") {
+                x.className += " responsive";
+            } else {
+                x.className = "navbar";
+            }
+        }
+    </script>
+
+    <script>
+        var header = document.getElementById("category");
+        var btns = header.getElementsByClassName("sub");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                var current = document.getElementsByClassName("subnav-active");
+                current[0].className = current[0].className.replace(" subnav-active", "");
+                this.className += " subnav-active";
+            });
+        }
+    </script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

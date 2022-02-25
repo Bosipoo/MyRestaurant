@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="middle-box">
+    <div class="tab" id="tab">
+        <a class="tablink button" href="/Identity/Account/Login"> Sign In</a>
+        <a class="tablink button" href="/Identity/Account/Register"> Sign Up</a>
+    </div>
+    <div class="tabcontent">
+        @RenderBody()
+    </div>
+
+</div>
+
+@{
+    @section Scripts{
+        @RenderSection("Scripts", required: false)
+
+        <script>
+            $(function () {
+                var current = location.pathname;
+                $('.tab a').each(function () {
+                    var $this = $(this);
+                    console.log($this.current)
+                    if (current.indexOf($this.attr('href')) !== -1) {
+                        $this.addClass('activ');
+                    }
+                })
+            })
+        </script>
+    }
+}

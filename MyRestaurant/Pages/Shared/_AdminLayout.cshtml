@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sidebar" style="display:none" id="mySidebar">
+        <button class="sb-button" onclick="sb_close()">
+            &times;
+        </button>
+        <a> MENU </a>
+        <a class="link active" asp-page="AdminDash">Products</a>
+        <a class="link" asp-controller="Admin" asp-action="Orders">Orders</a>
+    </div>
+
+    <div id="main">
+        <div class="row" id="admin-topbar">
+            <button id="openBar" class="sb-button" onclick="sb_open()">&#9776;</button>
+            <span class="logo"><a asp-page="Index">Pizzaria</a></span>
+        </div>
+        <div id="admin-content">
+            @RenderBody()
+        </div>
+        
+    </div>
+
+    <script>
+        function sb_open() {
+            document.getElementById("main").style.marginLeft = "20%";
+            document.getElementById("mySidebar").style.width = "20%";
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("openBar").style.display = 'none';
+        }
+        function sb_close() {
+            document.getElementById("main").style.marginLeft = "0%";
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("openBar").style.display = "inline-block";
+        }
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+
+
+
+
