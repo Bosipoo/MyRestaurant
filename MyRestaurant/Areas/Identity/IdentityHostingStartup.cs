@@ -16,11 +16,11 @@ namespace MyRestaurant.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<MyRestaurantContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("MyRestaurantContextConnection")));
+                //services.AddDbContext<MyRestaurantContext>(options =>
+                //    options.UseSqlServer(
+                //        context.Configuration.GetConnectionString("MyRestaurantContextConnection")));
 
-                //services.AddEntityFrameworkSqlite().AddDbContext<MyRestaurantContext>();
+                services.AddEntityFrameworkSqlite().AddDbContext<MyRestaurantContext>();
 
 
                 services.AddDefaultIdentity<MyRestaurantUser>(options => {
@@ -32,10 +32,10 @@ namespace MyRestaurant.Areas.Identity
                     .AddEntityFrameworkStores<MyRestaurantContext>();
             });
 
-            //using (var client = new MyRestaurantContext())
-            //{
-            //    client.Database.EnsureCreated();
-            //}
+            using (var client = new MyRestaurantContext())
+            {
+                client.Database.EnsureCreated();
+            }
         }
     }
 }

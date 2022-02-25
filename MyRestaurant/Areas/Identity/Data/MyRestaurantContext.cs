@@ -8,16 +8,16 @@ namespace MyRestaurant.Data
 {
     public class MyRestaurantContext : IdentityDbContext<MyRestaurantUser>
     {
-        public MyRestaurantContext(DbContextOptions<MyRestaurantContext> options)
-            : base(options)
-        {
-        }
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //public MyRestaurantContext(DbContextOptions<MyRestaurantContext> options)
+        //    : base(options)
         //{
-        //    //optionsBuilder.UseSqlServer("Data Source=sql2016.fse.network;Initial Catalog=db_1914741_myrestaurant;User ID=user_db_1914741_myrestaurant;Password=Pizz_6t7");
-        //    optionsBuilder.UseSqlite("Filename=Restaurant.db");
         //}
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //optionsBuilder.UseSqlServer("Data Source=sql2016.fse.network;Initial Catalog=db_1914741_myrestaurant;User ID=user_db_1914741_myrestaurant;Password=Pizz_6t7");
+            optionsBuilder.UseSqlite("Filename=Restaurant.db");
+        }
 
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Product> Products { get; set; }

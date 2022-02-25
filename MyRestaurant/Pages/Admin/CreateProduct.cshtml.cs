@@ -65,7 +65,7 @@ namespace MyRestaurant.Pages.Admin
                     _context.Entry(product).State = EntityState.Modified;
                     await _context.SaveChangesAsync();
                 }
-                return RedirectToPage("./AdminDash");
+                return RedirectToPage("/Admin/AdminDash");
             }
 
         }

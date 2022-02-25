@@ -1,0 +1,61 @@
+﻿@page
+@model MyRestaurant.Pages.Admin.OrdersModel
+@{
+    ViewData["Title"] = "Orders";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <div class="row" style="overflow-x: auto;">
+
+        <form asp-action="Orders" style="display:inline;">
+            <input id="search-box" name="name" size="40" type="text" placeholder="Search by Order Number.." />
+            <input id="search-btn" value="Search" type="submit" />
+        </form>
+
+    </div>
+    <div class="row" style="overflow-x: auto;">
+
+        <table id="product-table">
+            <thead>
+                <tr>
+                    @foreach (var item in Model.list)
+                    {
+                        <th>@Html.DisplayNameFor(model => item.Order.OrderDate)</th>
+                        <th>@Html.DisplayNameFor(model => item.Order.OrderNumber)</th>
+                        <th>@Html.DisplayNameFor(model => item.ItemId)</th>
+                        <th>@Html.DisplayNameFor(model => item.Quantity)</th>
+                        <th>@Html.DisplayNameFor(model => item.UnitPrice)</th>
+                        <th>@Html.DisplayNameFor(model => item.Total)</th>
+                    }
+
+                    </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var order in Model.list)
+                {
+                    <tr class="orders">
+                        <td>@order.Order.OrderDate</td>
+                        <td>@order.Order.OrderNumber</td>
+                        <td>@order.ItemId</td>
+                        <td>@order.Quantity</td>
+                        <td>@order.UnitPrice</td>
+                        <td>@order.Total</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+    $(function () {
+        $("#search-btn").click(function () {
+            $("Form").submit();
+        })
+    });
+    </script>
+}

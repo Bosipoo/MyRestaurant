@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MyRestaurant.Data;
 using MyRestaurant.Models;
-using MyRestaurant.Services;
+using System.Threading.Tasks;
 
 namespace MyRestaurant.Pages.Admin
 {
