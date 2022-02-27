@@ -16,37 +16,45 @@
     </div>
     <div class="row" style="overflow-x: auto;">
 
-        <table id="product-table">
-            <thead>
-                <tr>
-                    @foreach (var item in Model.list)
+        @if (Model.list.Count == 0)
+        {
+            <h4> No Order has been placed </h4>
+        }
+        else
+        {
+            <table id="product-table">
+                <thead>
+                    <tr>
+                        @foreach (var item in Model.list)
+                        {
+                            <th>@Html.DisplayNameFor(model => item.Order.OrderDate)</th>
+                            <th>@Html.DisplayNameFor(model => item.Order.OrderNumber)</th>
+                            <th>@Html.DisplayNameFor(model => item.ItemId)</th>
+                            <th>@Html.DisplayNameFor(model => item.Quantity)</th>
+                            <th>@Html.DisplayNameFor(model => item.UnitPrice)</th>
+                            <th>@Html.DisplayNameFor(model => item.Total)</th>
+                        }
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var order in Model.list)
                     {
-                        <th>@Html.DisplayNameFor(model => item.Order.OrderDate)</th>
-                        <th>@Html.DisplayNameFor(model => item.Order.OrderNumber)</th>
-                        <th>@Html.DisplayNameFor(model => item.ItemId)</th>
-                        <th>@Html.DisplayNameFor(model => item.Quantity)</th>
-                        <th>@Html.DisplayNameFor(model => item.UnitPrice)</th>
-                        <th>@Html.DisplayNameFor(model => item.Total)</th>
+                        <tr class="orders">
+                            <td>@order.Order.OrderDate</td>
+                            <td>@order.Order.OrderNumber</td>
+                            <td>@order.ItemId</td>
+                            <td>@order.Quantity</td>
+                            <td>@order.UnitPrice</td>
+                            <td>@order.Total</td>
+
+                        </tr>
                     }
+                </tbody>
+            </table>
+        }
 
-                    </tr>
-            </thead>
-            <tbody>
-
-                @foreach (var order in Model.list)
-                {
-                    <tr class="orders">
-                        <td>@order.Order.OrderDate</td>
-                        <td>@order.Order.OrderNumber</td>
-                        <td>@order.ItemId</td>
-                        <td>@order.Quantity</td>
-                        <td>@order.UnitPrice</td>
-                        <td>@order.Total</td>
-
-                    </tr>
-                }
-            </tbody>
-        </table>
     </div>
 </div>
 

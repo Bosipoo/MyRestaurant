@@ -5,7 +5,7 @@
     Layout = "~/Pages/Shared/_AdminLayout.cshtml";
 }
 <div id="admin-content">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="f-group">
             <div class="row">
                 <div class="left pad">
@@ -30,9 +30,10 @@
                         <span asp-validation-for="model.Price" class="text-danger"></span>
                     </div>
                     <div class="pad">
-                        <label class="form-label" asp-for="model.ImagePath"></label>
-                        <input asp-for="model.ImagePath" />
-                        <span asp-validation-for="model.ImagePath" class="text-danger"></span>
+                        <label class="form-label" asp-for="model.Image"></label>
+                        @*<input asp-for="model.Image" type="file" name="photo" accept="image/*" />*@
+                        <input type="file" name="photo" accept="image/*" />
+                        <span asp-validation-for="model.Image" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="left">
@@ -44,7 +45,14 @@
                 </div>
             </div>
             <div class="f-group">
-                <center><button class="log" type="submit">Submit</button></center>
+                <center><button class="log" type="submit" value="Upload">Submit</button></center>
+                @if (!string.IsNullOrEmpty(Model.FileName))
+                {
+                    <span>
+                        <br />
+                        <img src="~/images/@Model.FileName" />
+                    </span>
+                }
             </div>
 
         </div>
